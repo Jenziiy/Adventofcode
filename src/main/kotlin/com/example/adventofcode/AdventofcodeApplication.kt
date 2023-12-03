@@ -9,6 +9,7 @@ class AdventofcodeApplication
 fun main(args: Array<String>) {
 	runApplication<AdventofcodeApplication>(*args)
 	println("this is main")
-	Calibration().getData()
+// 	Calibration().getData() //AdventOfCodeDay1Challenge1
+	Calibration().getData2()
 }
 
