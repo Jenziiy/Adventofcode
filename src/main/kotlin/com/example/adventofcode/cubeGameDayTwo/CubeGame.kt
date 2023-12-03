@@ -18,9 +18,9 @@ class CubeGame {
     }
 
     fun getEligibleGames(){
-        var sumIDs = 0;
+        var sumIDs = 0
         val gameMap = getFileContents()
-        var sumEligibleIDs = 0;
+        var sumEligibleIDs = 0
         gameMap.forEach{ it ->
             val gameID = it.key
             var eligibleGame = true
