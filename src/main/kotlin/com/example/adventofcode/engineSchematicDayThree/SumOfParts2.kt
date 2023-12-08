@@ -4,7 +4,6 @@ import com.example.adventofcode.MyFile
 
 class SumOfParts2 {
     private fun create2DArray(): MutableList<List<String>> {
-        var fileLineAmount = 0
         val reader = MyFile().getFile("sumofparts.txt")
 
         val twoDArray = mutableListOf<List<String>>()

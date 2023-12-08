@@ -1,5 +1,6 @@
 package com.example.adventofcode
 //import com.example.adventofcode.calibrationDayOne.Calibration
+import com.example.adventofcode.engineSchematicDayThree.SumOfGearRatios
 import com.example.adventofcode.engineSchematicDayThree.SumOfParts2
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
@@ -13,7 +14,7 @@ fun main(args: Array<String>) {
 // 	Calibration().getData() //AdventOfCodeDay1Challenge1
 //	Calibration().getData2()
 //	CubeGame().getEligibleGames()
-//	SumOfParts().getAdjacentNumbers()
 	SumOfParts2().calculateSumOfAdjacentNumbers()
+	println(SumOfGearRatios().sumOfGears())
 }
 
