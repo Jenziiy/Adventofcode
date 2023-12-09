@@ -2,7 +2,7 @@ package com.example.adventofcode.engineSchematicDayThree
 
 import com.example.adventofcode.MyFile
 
-class SumOfParts2 {
+class SumOfParts {
     private fun create2DArray(): MutableList<List<String>> {
         val reader = MyFile().getFile("sumofparts.txt")
 

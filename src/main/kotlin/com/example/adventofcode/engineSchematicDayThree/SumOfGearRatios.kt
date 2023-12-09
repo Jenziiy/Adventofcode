@@ -1,11 +1,12 @@
 package com.example.adventofcode.engineSchematicDayThree
 
 import com.example.adventofcode.MyFile
-import java.io.BufferedReader
 
 class SumOfGearRatios {
-    private val file = MyFile().getFile("gearRatiosTest")
-    private fun create2DList(file: BufferedReader): MutableList<List<String>> {
+    private val file = MyFile().getFile("sumofparts.txt")
+    private val twoDList = create2DList()
+    private fun create2DList(): MutableList<MutableList<String>> {
+        val twoDList = mutableListOf<MutableList<String>>()
         file.forEachLine {
             val oneDList = mutableListOf<String>()
             it.forEach { it2 ->
@@ -15,17 +16,10 @@ class SumOfGearRatios {
         }
         return twoDList
     }
-    private val twoDList = create2DList(file)
-    // loop file
-        // get gears per line
-            // look for * -> no? return 0
-            //            -> yes? look line above
-            //            -> line above is num? look
-            //            ->
-
-    fun sumOfGears(): Int{
+    fun sumOfGears(): Int {
         var gears = 0
-        twoDList.forEachIndexed{ it, line ->
+        println(twoDList)
+        twoDList.forEachIndexed { it, line ->
             gears += getGears(it, line)
         }
         return gears
@@ -33,49 +27,58 @@ class SumOfGearRatios {
     private fun getGears(lineIndex: Int, line: List<String>): Int {
         var res = 0
         line.forEachIndexed { itemIndex, item ->
-            if(item == "*"){
-             res += getGearPart(lineIndex, itemIndex)
+            if (item == "*") {
+                res += getGearPart(lineIndex, itemIndex)
             }
         }
         return res
     }
-
     private fun getGearPart(x: Int, y: Int): Int {
-        val visitedNodeSet = mutableSetOf<String>()
-        visitedNodeSet.add("$x,$y")
-        for(i in x-1..x+1){
-            var numberStringPositive = ""
-            var numberStringNegative = ""
-            var numberString = ""
-            var isSpecialSymbol1 = false
-            var isSpecialSymbol2 = false
-        for (j in 0..3) {
-            var coordinates = "$i,${y - j}"
-            if (!visitedNodeSet.contains(coordinates) && !isSpecialSymbol1) {
-                visitedNodeSet.add(coordinates)
-                if (twoDList[i][y-j] matches "[0-9]".toRegex()) {
-                    numberStringNegative += twoDList[i][y-j]
-                } else {
-                    isSpecialSymbol1 = true
-                    numberStringNegative = numberStringNegative.reversed()
-                }
-            }
-            coordinates = "$i,${y + j}"
-            if (!visitedNodeSet.contains(coordinates)) {
-                visitedNodeSet.add(coordinates)
-                if (twoDList[i][y+j] matches "[0-9]".toRegex()) {
-                    numberStringPositive += twoDList[i][y+j]
-                } else {
-                    isSpecialSymbol2 = true
-                }
-            }
-            if (isSpecialSymbol1 && isSpecialSymbol2){
-                numberString = numberStringNegative + numberStringPositive
-                return numberString.toInt()
-            }
-        }
-        }
+        val numList = mutableListOf<String>()
+        var gearPart = 0
+        val prevLineNumberStr = getNumbers(x-1,y)
+        val currLineNumberStr = getNumbers(x,y)
+        val nextLineNumberStr = getNumbers(x+1,y)
 
-        return 0
+        if(prevLineNumberStr.isNotEmpty())
+        prevLineNumberStr.split("[^0-9]".toRegex()).forEach{
+            if(it.isNotEmpty())
+            numList.add(it)
+        }
+        if(currLineNumberStr.isNotEmpty())
+        currLineNumberStr.split("[^0-9]".toRegex()).forEach{
+            if(it.isNotEmpty())
+                numList.add(it)
+        }
+        if(nextLineNumberStr.isNotEmpty())
+        nextLineNumberStr.split("[^0-9]".toRegex()).forEach{
+            if(it.isNotEmpty())
+                numList.add(it)
+        }
+        if(numList.size == 2 ){
+         gearPart = numList[0].toInt() * numList[1].toInt()
+        }
+        return gearPart
+    }
+    private fun getNumbers(x: Int, y: Int): String {
+        var lineNumberString = ""
+        for (item in -3..3) {
+            lineNumberString += (twoDList[x][y + item])
+        }
+        if (lineNumberString[4].toString() matches "[^0-9]".toRegex()) {
+           lineNumberString = lineNumberString.subSequence(0, 4).toString()
+        } else if (lineNumberString[5].toString() matches "[^0-9]".toRegex()) {
+            lineNumberString = lineNumberString.subSequence(0, 5).toString()
+        } else if (lineNumberString[6].toString() matches "[^0-9]".toRegex()) {
+            lineNumberString = lineNumberString.subSequence(0, 6).toString()
+        }
+        if (lineNumberString[2].toString() matches "[^0-9]".toRegex()) {
+            lineNumberString = lineNumberString.subSequence(3, lineNumberString.length).toString()
+        } else if (lineNumberString[1].toString() matches "[^0-9]".toRegex()) {
+            lineNumberString = lineNumberString.subSequence(2, lineNumberString.length).toString()
+        } else if (lineNumberString[1].toString() matches "[^0-9]".toRegex()) {
+            lineNumberString = lineNumberString.subSequence(1, lineNumberString.length).toString()
+        }
+        return lineNumberString
     }
 }
