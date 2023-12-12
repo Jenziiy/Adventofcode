@@ -24,13 +24,9 @@ class ScratchCards {
             val havingList = having.split(" ").toMutableList()
             preprocessList(winningList)
             preprocessList(havingList)
-            println(winningList)
-            println(havingList)
             val winningNumberAmount = calculateDuplicates(winningList, havingList)
-            // if winningNumberAmount == 0 return
-            // calculateDuplicates(index+1..index+winningNumberAmount))
-            //
             result += (Math.pow(2.0,winningNumberAmount.toDouble())).toInt()
+
         }
         return result
     }
