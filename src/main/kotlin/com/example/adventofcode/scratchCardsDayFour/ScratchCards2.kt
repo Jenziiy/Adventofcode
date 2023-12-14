@@ -52,7 +52,7 @@ class ScratchCards2 {
                 res.forEach {
                 queue.add(it)
             }
-            println(result)
+            //println(result)
             result += getDuplicateAmount(traversableCards[0], traversableCards[1]).size
         }
     println(result)
