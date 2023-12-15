@@ -19,8 +19,7 @@ fun main(args: Array<String>) {
 //	CubeGame().getEligibleGames()
 //	SumOfParts().calculateSumOfAdjacentNumbers()
 //	println(SumOfGearRatios().sumOfGears())
-//	val res = ScratchCards2().getTraversalAmount()
-//	println(res)
+//	println(ScratchCards2().getTraversalAmount())
 	seedToSoil().processFile()
 }
 
