@@ -4,6 +4,7 @@ import com.example.adventofcode.engineSchematicDayThree.SumOfGearRatios
 import com.example.adventofcode.engineSchematicDayThree.SumOfParts
 import com.example.adventofcode.scratchCardsDayFour.ScratchCards
 import com.example.adventofcode.scratchCardsDayFour.ScratchCards2
+import com.example.adventofcode.seedToSoilDayFive.seedToSoil
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
 
@@ -18,7 +19,8 @@ fun main(args: Array<String>) {
 //	CubeGame().getEligibleGames()
 //	SumOfParts().calculateSumOfAdjacentNumbers()
 //	println(SumOfGearRatios().sumOfGears())
-	val res = ScratchCards2().getTraversalAmount()
-	println(res)
+//	val res = ScratchCards2().getTraversalAmount()
+//	println(res)
+	seedToSoil().processFile()
 }
 
