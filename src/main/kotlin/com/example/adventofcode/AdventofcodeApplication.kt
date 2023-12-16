@@ -1,10 +1,6 @@
 package com.example.adventofcode
 //import com.example.adventofcode.calibrationDayOne.Calibration
-import com.example.adventofcode.engineSchematicDayThree.SumOfGearRatios
-import com.example.adventofcode.engineSchematicDayThree.SumOfParts
-import com.example.adventofcode.scratchCardsDayFour.ScratchCards
-import com.example.adventofcode.scratchCardsDayFour.ScratchCards2
-import com.example.adventofcode.seedToSoilDayFive.seedToSoil
+import com.example.adventofcode.seedToSoilDayFive.SeedToSoil
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
 
@@ -20,6 +16,6 @@ fun main(args: Array<String>) {
 //	SumOfParts().calculateSumOfAdjacentNumbers()
 //	println(SumOfGearRatios().sumOfGears())
 //	println(ScratchCards2().getTraversalAmount())
-	seedToSoil().processFile()
+	SeedToSoil().getLocationNumbers()
 }
 
