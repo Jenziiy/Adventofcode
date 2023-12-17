@@ -78,4 +78,3 @@ class SeedToSoil {
         return subResult
     }
 }
-

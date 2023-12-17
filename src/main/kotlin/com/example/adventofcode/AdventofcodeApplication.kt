@@ -1,6 +1,7 @@
 package com.example.adventofcode
 //import com.example.adventofcode.calibrationDayOne.Calibration
 import com.example.adventofcode.seedToSoilDayFive.SeedToSoil
+import com.example.adventofcode.seedToSoilDayFive.SeedToSoil2
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
 
